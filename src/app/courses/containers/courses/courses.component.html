@@ -1,0 +1,39 @@
+<mat-card>
+  <mat-card-content>
+    <mat-toolbar color="primary"> Cursos disponíveis </mat-toolbar>
+    <button (click)="refresh()" mat-mini-fab color="primary" aria-label="refresh-page">
+      <!-- <mat-icon>add</mat-icon> -->
+      Refresh
+    </button>
+
+    @if (courses$ | async; as courses) {
+      <div
+        class="mat-elevation-z8  colum-flex">
+        @if (courses$ | async; as courses) {
+          <app-courses-list
+            [courses]="courses.courses"
+            (add)="onAdd()"
+            (edit)="onEdit($event)"
+            (remove)="onRemove($event)"
+          ></app-courses-list>
+        } @else {
+          <div class="loading-spinner">
+            <mat-spinner></mat-spinner>
+          </div>
+        }
+        <mat-paginator [pageSizeOptions]="[5, 10, 15]"
+          showFirstLastButtons
+          [pageIndex]="pageIndex"
+          [pageSize]="pageSize"
+          [length]="courses.totalElements"
+          (page)="refresh($event)"
+          aria-label="Select page of courses">
+        </mat-paginator>
+      </div>
+    } @else {
+      <div class="loading-spinner">
+        <mat-spinner></mat-spinner>
+      </div>
+    }
+  </mat-card-content>
+</mat-card>
