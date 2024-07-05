@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { MatToolbar } from '@angular/material/toolbar';
 
 @Component({
@@ -11,4 +11,17 @@ import { MatToolbar } from '@angular/material/toolbar';
 })
 export class AppComponent {
   title = 'crud-angular';
+
+  constructor(
+    private router: Router,
+  ) { }
+
+
+  onTable() {
+    this.router.navigate(['tabela']);
+  }
+
+  onCourses() {
+    this.router.navigate(['courses']);
+  }
 }

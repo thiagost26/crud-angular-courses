@@ -1,0 +1,62 @@
+<div>
+  <h2>Gerador de Tabela</h2>
+  <form (ngSubmit)="addData()">
+    <label for="upm">UPM:</label>
+    <input id="upm" [(ngModel)]="upm" name="upm" required>
+
+    <label for="chegada">Chegada:</label>
+    <input id="chegada" [(ngModel)]="chegada" name="chegada" required>
+
+    <label for="saida">Saída:</label>
+    <input id="saida" [(ngModel)]="saida" name="saida" required>
+
+    <label for="origem">Origem:</label>
+    <input id="origem" [(ngModel)]="origem" name="origem" required>
+
+    <label for="recebido">Recebido:</label>
+    <input id="recebido" [(ngModel)]="recebido" name="recebido" required>
+
+    <button type="submit">Gerar</button>
+  </form>
+</div>
+
+<button type="button" (click)="addExercicio()">Add Exercício</button>
+
+
+@if(dataList) {
+  <div>
+    <h2>Dados Inseridos</h2>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>LOTAÇÃO</th>
+          <th colspan="2">PERÍODOS</th>
+          <th rowspan="2">Origem</th>
+          <th rowspan="2">Recebido</th>
+          <th colspan="6">Exercícios</th>
+        </tr>
+          <th>UPM</th>
+          <th>Chegada</th>
+          <th>Saída</th>
+          <th>2000</th>
+          <th>2000</th>
+          <th>2000</th>
+          <th>2000</th>
+          <th>2000</th>
+          <th>2000</th>
+      </thead>
+      <tbody>
+        @for (data of dataList; track data; let i = $index) {
+          <tr>
+            <td>{{ data.upm }}</td>
+            <td>{{ data.chegada }}</td>
+            <td>{{ data.saida }}</td>
+            <td>{{ data.origem }}</td>
+            <td>{{ data.recebido }}</td>
+            <td>{{ data.exercicio }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+}

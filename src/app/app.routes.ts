@@ -6,5 +6,9 @@ export const APP_ROUTES: Routes = [
   {
     path: 'courses',
     loadChildren: () => import('./courses/courses.routes').then(m => m.COURSES_ROUTES),
+  },
+  {
+    path: 'tabela',
+    loadChildren: () => import('./gerar-tabela/tabela.routes').then(m => m.TABELA_ROUTES),
   }
 ];
